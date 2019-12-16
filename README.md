@@ -40,6 +40,16 @@
     ```
 *  On seriously malformed URLs, parse_url() may return FALSE.
 
+* On file uploads, there's always chance for random file inclusion vulnerability.
+  Popular payload :
+  ```php
+  <?php
+  echo file_get_contents('./flag.txt');
+  ?>
+  ```
+* [Vulnerable PHP functions](https://stackoverflow.com/questions/3115559/exploitable-php-functions)
+* PHP loose comparison: ![image](https://user-images.githubusercontent.com/42961174/70924134-0a90fa00-204f-11ea-833f-51bc2690078b.png)
+
 **Problems**
 * Level One
   * App shows first id from the resultset , so in order to get all the passwords, use `group_concat` 
@@ -51,3 +61,5 @@
   * Comparing array with string return zero
 * Nobody listen to techno, nor to wrap music
   * Insert malformed url as parse_url returns false.
+* Level 8
+ * `exif_imagetype` just checks the file headers, and it's very easy to bypass and `getimagesize` should not be used to check image type.
