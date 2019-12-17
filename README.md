@@ -50,6 +50,23 @@
 * [Vulnerable PHP functions](https://stackoverflow.com/questions/3115559/exploitable-php-functions)
 * PHP loose comparison: ![image](https://user-images.githubusercontent.com/42961174/70924134-0a90fa00-204f-11ea-833f-51bc2690078b.png)
 
+* We can use result set of another `select` statement as table in a SQL query. E.g.:
+  ```
+   SELECT username,password FROM (SELECT * FROM users) WHERE username = xyz
+  ```
+
+* `AS` can be ommited in a sqlite query.
+
+* `unset` function in php should not be used in an arrray as it decreases the size of array.
+* `create_function` uses eval to evalute the code outside the function. So, it could be used for RCE. Sample payload:
+  ```
+   return -1;}phpinfo();\*
+  ```
+  
+ * [Very cool list of facts](https://github.com/qazbnm456/awesome-security-trivia)
+ 
+ * We could escape `preg_replace` by using similar word in between other word. E.g `UNION` as `UNUNIONION`
+ 
 **Problems**
 * Level One
   * App shows first id from the resultset , so in order to get all the passwords, use `group_concat` 
