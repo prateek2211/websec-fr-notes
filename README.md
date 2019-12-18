@@ -67,6 +67,8 @@
  
  * We could escape `preg_replace` by using similar word in between other word. E.g `UNION` as `UNUNIONION`
  
+ * When browsers parse tag attributes, they HTML-decode their values first. <foo bar='z'> is the same as <foo bar='&#x7a;'
+ 
 **Problems**
 * Level One
   * App shows first id from the resultset , so in order to get all the passwords, use `group_concat` 
