@@ -67,8 +67,17 @@
  
  * We could escape `preg_replace` by using similar word in between other word. E.g `UNION` as `UNUNIONION`
  
- * When browsers parse tag attributes, they HTML-decode their values first. <foo bar='z'> is the same as <foo bar='&#x7a;'
+ ## XSS
  
+ * When browsers parse tag attributes, they HTML-decode their values first. <foo bar='z'> is the same as <foo bar='&#x7a;'
+ * We can execute javascript on click of a url. E.G:
+  
+  ```html
+     <a href="javascript:alert('Hello')"/>        
+  ```
+ * Signup redirects are very dangerous source of XSS. E.g. `https://xss-game.appspot.com/level5/frame/signup?next=confirm` generates a link on the page pointing to `confirm` endpoint. We can inject arbitrary js code into url to execute on link click.
+
+                                                                                                              
 **Problems**
 * Level One
   * App shows first id from the resultset , so in order to get all the passwords, use `group_concat` 
